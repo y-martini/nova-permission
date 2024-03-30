@@ -24,7 +24,10 @@ trait InteractsWithPermissions
   protected static function authorizedByPermission(Http\Request $request, Enums\PermissionType $type, string $authorization)
   {
     $permission = static::permissionName($type, static::class, $authorization);
-    $user = Nova\Nova::user($request);
+
+    if(!($user = Nova\Nova::user($request))) {
+      return false;
+    }
 
     if(static::hasPermissionTo($user, $permission)) {
       return true;
