@@ -20,7 +20,7 @@ trait Authorizable
   public static function authorizedToViewAny(Http\Request $request)
   {
     return 
-      parent::authorizedToViewAny($request) 
+      parent::authorizedToViewAny($request)
       && static::resourceAuthorizedByPermission($request, Enums\ResourceAuthorization::view);
   }
 
@@ -33,7 +33,7 @@ trait Authorizable
   public function authorizedToView(Http\Request $request)
   {
     return 
-      parent::authorizedToView($request) 
+      parent::authorizedToView($request)
       && static::resourceAuthorizedByPermission($request, Enums\ResourceAuthorization::view);
   }
 
@@ -46,7 +46,7 @@ trait Authorizable
   public static function authorizedToCreate(Http\Request $request)
   {
     return 
-      parent::authorizedToCreate($request) 
+      parent::authorizedToCreate($request)
       && static::resourceAuthorizedByPermission($request, Enums\ResourceAuthorization::create);
   }
 
@@ -59,7 +59,7 @@ trait Authorizable
   public function authorizedToUpdate(Http\Request $request)
   {
     return 
-      parent::authorizedToUpdate($request) 
+      parent::authorizedToUpdate($request)
       && static::resourceAuthorizedByPermission($request, Enums\ResourceAuthorization::update);
   }
 
@@ -72,7 +72,7 @@ trait Authorizable
   public function authorizedToDelete(Http\Request $request)
   {
     return 
-      parent::authorizedToDelete($request) 
+      parent::authorizedToDelete($request)
       && static::resourceAuthorizedByPermission($request, Enums\ResourceAuthorization::delete);
   }
 
