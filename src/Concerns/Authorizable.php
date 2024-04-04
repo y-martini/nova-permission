@@ -78,14 +78,16 @@ trait Authorizable
 
   public function authorizedToRestore(Http\Request $request)
   {
-    parent::authorizeToRestore($request);
-    static::authorizeByPermission($request, Enums\ResourceAuthorization::restore);
+    return 
+      parent::authorizedToRestore($request)
+      && static::resourceAuthorizedByPermission($request, Enums\ResourceAuthorization::restore);
   }
 
   public function authorizedToForceDelete(Http\Request $request)
   {
-    parent::authorizeToForceDelete($request);
-    static::authorizeByPermission($request, Enums\ResourceAuthorization::forceDelete);
+    return 
+      parent::authorizedToForceDelete($request)
+      && static::resourceAuthorizedByPermission($request, Enums\ResourceAuthorization::forceDelete);
   }
 
   protected static function authorizeByPermission(Http\Request $request, Enums\ResourceAuthorization $authorization)
